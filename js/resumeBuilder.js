@@ -121,10 +121,15 @@ var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].
 
  displaywork();
 
+$(document).click(function(loc){
+  var x = loc.pageX;
+  var y = loc.pageY;
+  logClicks(x,y);
+});
 
-$("#main").prepend(formattedMobile);
+$("#main").append(formattedMobile);
 
-$("#main").prepend(formattedEmail);
+$("#main").append(formattedEmail);
 
 
 
