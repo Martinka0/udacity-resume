@@ -73,7 +73,7 @@ var education =  {
     "description": "Experience in interacting with all levels and departments."
   }]
 };
-function displaywork (){
+
 for(job in work.jobs) {
 $("#workExperience").append(HTMLworkStart);
  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -87,20 +87,18 @@ $("#workExperience").append(HTMLworkStart);
 var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
  $(".work-entry:last").append(formattedDescription);
 }
-}
 
- displaywork();
 var projects = {
   "projects": [{
     "title": "Sample Projects 1",
     "dates": "2017",
     "description": "arcade game",
-    "images": [https://unsplash.it/200/300/?random]
+    "images": ["https://unsplash.it/200/300/?random"]
   }, {
     "title": "Sample Projects 2",
     "dates": "2017",
     "description": "map",
-    "images": [https://unsplash.it/200/300/?random]
+    "images": ["https://unsplash.it/200/300/?random"]
   }]
 };
 
