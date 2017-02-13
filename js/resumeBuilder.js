@@ -2,16 +2,16 @@
 
 
 var bio = {
-  name : "Martina Klimova",
-  role : "Web Developer",
-  welcomeMessage: "Welcome you are",
-  biopic : "images/mePark.jpg",
-  skills : ["programming","JavaScript", "CSS","HTML"],
-  contacts: {
-    mobile: "+420 604150128",
-    email: "martinaklimova@mac.com",
-    github: "martinka0",
-    location: "Austin"
+  "name" : "Martina Klimova",
+  "role" : "Web Developer",
+  "welcomeMessage": "Welcome you are",
+  "biopic" : "images/mePark.jpg",
+  "skills" : ['programming','JavaScript', 'CSS','HTML'],
+  "contacts": {
+    "mobile": "+420 604150128",
+    "email": "martinaklimova@mac.com",
+    "github": "martinka0",
+    "location": "Austin"
   },
  };
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -30,12 +30,12 @@ $("#header").prepend(formattedName);
 $("#header").append(formattedRole);
 $("#header").append(formattedWelcomeMessage);
 $("#header").append(formattedBiopic);
-$("#header").append(formattedGithub);
-$("#header").append(formattedLocation);
-$("#header").append(formattedMobile);
-$("#header").append(formattedEmail);
+$("#topContacts").append(formattedGithub);
+$("#topContacts").append(formattedLocation);
+$("#topContacts").append(formattedMobile);
+$("#topContacts").append(formattedEmail);
 
-
+ $("#mapDiv").append(googleMap);
 var education =  {
   "schools": [{
     "name": "Pacific Northwest College of Art",
@@ -105,18 +105,17 @@ var projects = {
 
 $("#main").append(internationalizeButton);
 
-
-if (bio.skills.length > 0) {
+// for(skill in bio.skills) {
   $("#header").append(HTMLskillsStart);
-  var formattedSkills = HTMLskills.replace ("%data%", bio.skills[0]);
-  $("#skills").append(formattedSkills);
-  var formattedSkills = HTMLskills.replace ("%data%", bio.skills[1]);
-  $("#skills").append(formattedSkills);
-  var formattedSkills = HTMLskills.replace ("%data%", bio.skills[2]);
-  $("#skills").append(formattedSkills);
-  var formattedSkills = HTMLskills.replace ("%data%", bio.skills[3]);
-  $("#skills").append(formattedSkills);
-}
+//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[0]);
+//   $("#skills").append(formattedSkills);
+//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[1]);
+//   $("#skills").append(formattedSkills);
+//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[2]);
+//   $("#skills").append(formattedSkills);
+//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[3]);
+//   $("#skills").append(formattedSkills);
+// }
 
 // $("#main").prepend(work["position"]);
 // $("#main").prepend(education.name);
@@ -124,10 +123,10 @@ if (bio.skills.length > 0) {
 
 
 
-// for(var i = 0; i < bio.skills.length; ++i){
-//  var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
-//  $("#header").append(formattedSkills);
-// };
+for(var i = 0; i < bio.skills.length; ++i){
+ var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+ $("#skills").append(formattedSkills);
+};
 
 
 
@@ -136,18 +135,18 @@ if (bio.skills.length > 0) {
     $("#projects").append(HTMLprojectStart);
 
     var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-    $("project-entry:last").append(formattedTitle);
+    $(".project-entry:last").append(formattedTitle);
 
     var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-    $("project-entry:last").append(formattedDates);
+    $(".project-entry:last").append(formattedDates);
 
     var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-    $("project-entry:last").append(formattedDescription);
+    $(".project-entry:last").append(formattedDescription);
 
     if (projects.projects[project].images.length > 0) {
       for (image in projects.projects[project].images) {
         var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-            $("project-entry:last").append(formattedImage);
+            $(".project-entry:last").append(formattedImage);
 
       }
 
