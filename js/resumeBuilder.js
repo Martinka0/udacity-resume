@@ -4,8 +4,8 @@
 var bio = {
   "name" : "Martina Klimova",
   "role" : "Web Developer",
-  "welcomeMessage": "Welcome you are",
-  "biopic" : "images/mePark.jpg",
+  "welcomeMessage": "Welcome to my page",
+  "biopic" : "images/me.jpg",
   "skills" : ['programming','JavaScript', 'CSS','HTML'],
   "contacts": {
     "mobile": "+420 604150128",
@@ -18,34 +18,44 @@ var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-//var formattedPosition = HTMLposition.replace("%data%", work.position);
 var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
 var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
 
-
+$("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
-$("#header").append(formattedRole);
-$("#header").append(formattedWelcomeMessage);
-$("#header").append(formattedBiopic);
-$("#topContacts").append(formattedGithub);
-$("#topContacts").append(formattedLocation);
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedEmail);
+$("#header").prepend(formattedBiopic);
 
- $("#mapDiv").append(googleMap);
+$("#header").append(formattedWelcomeMessage);
+$("#topContacts").append("<li><i class='fa fa-github' aria-hidden='true'>"+"</i> martinka0</li>");
+$("#topContacts").append("<li><i class='fa fa-mobile' aria-hidden='true'>"+"</i> +420604150128</li>");
+$("#topContacts").append("<li><i class='fa fa-globe' aria-hidden='true'>"+"</i> Austin</li>");
+
+$("#topContacts").append("<li><i class='fa fa-envelope-o' aria-hidden='true'>"+"</i> martinaklimova@mac.com</li>");
+$("#footerContacts").append("<li><i class='fa fa-github' aria-hidden='true'>"+"</i> martinka0</li>");
+$("#footerContacts").append("<li><i class='fa fa-globe' aria-hidden='true'>"+"</i> Austin</li>");
+$("#footerContacts").append("<li><i class='fa fa-mobile' aria-hidden='true'>"+"</i> +420604150128</li>");
+$("#footerContacts").append("<li><i class='fa fa-envelope-o' aria-hidden='true'>"+"</i> martinaklimova@mac.com</li>");
+
+$("#header").append(HTMLskillsStart);
+for(var i = 0; i < bio.skills.length; ++i){
+ var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+ $("#skills").append(formattedSkills);
+};
+
+
 var education =  {
   "schools": [{
     "name": "Pacific Northwest College of Art",
-    "city": "Portland, OR, US",
+    "location": "Portland, OR, US",
     "major": ["B.F.A. in Communication Design"],
     "graduationYear": 2003,
     "url": "http: //www.pnca.edu/"
   }, {
     "name": "Santa Barbara City College",
-    "city": "Santa Barbara,CA, US",
+    "location": "Santa Barbara,CA, US",
     "major": ["International Marketing Communication"],
     "graduationYear": 1998,
     "url": "http://www.sbcc.edu/"
@@ -93,69 +103,36 @@ var projects = {
     "title": "Sample Projects 1",
     "dates": "2017",
     "description": "arcade game",
-    "images": ["https://unsplash.it/200/300/?random"]
+    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
   }, {
     "title": "Sample Projects 2",
     "dates": "2017",
     "description": "map",
-    "images": ["https://unsplash.it/200/300/?random"]
+    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
   }]
 };
 
+for (var i = 0; i < projects.projects.length; i++) {
+  //
+    $("#projects").append(HTMLprojectStart)
+    var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+    $(".project-entry:last").append(formattedProjectTitle);
+    //Code for dates
+    var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].title);
+    $(".project-entry:last").append(formattedProjectDates);
+    //Code for description
+    var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+    $(".project-entry:last").append(formattedProjectDescription);
+    //Code for images
+    for  (var j = 0; j < projects.projects[i].images.length; j++) {
 
+    var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
+    $(".project-entry:last").append(formattedImage);
+  }
+}
+
+$("#mapDiv").append(googleMap);
 $("#main").append(internationalizeButton);
-
-// for(skill in bio.skills) {
-  $("#header").append(HTMLskillsStart);
-//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[0]);
-//   $("#skills").append(formattedSkills);
-//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[1]);
-//   $("#skills").append(formattedSkills);
-//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[2]);
-//   $("#skills").append(formattedSkills);
-//   var formattedSkills = HTMLskills.replace ("%data%", bio.skills[3]);
-//   $("#skills").append(formattedSkills);
-// }
-
-// $("#main").prepend(work["position"]);
-// $("#main").prepend(education.name);
-// $("#main").prepend(education["years"]);
-
-
-
-for(var i = 0; i < bio.skills.length; ++i){
- var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
- $("#skills").append(formattedSkills);
-};
-
-
-
- projects.display = function() {
-  for(project in projects.projects){
-    $("#projects").append(HTMLprojectStart);
-
-    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-    $(".project-entry:last").append(formattedTitle);
-
-    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-    $(".project-entry:last").append(formattedDates);
-
-    var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-    $(".project-entry:last").append(formattedDescription);
-
-    if (projects.projects[project].images.length > 0) {
-      for (image in projects.projects[project].images) {
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-            $(".project-entry:last").append(formattedImage);
-
-      }
-
-}
-}
-
-};
- projects.display();
-
 
 
 function inName(name) {
