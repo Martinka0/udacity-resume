@@ -6,7 +6,7 @@ var bio = {
   "role" : "Web Developer",
   "welcomeMessage": "Welcome to my page",
   "biopic" : "images/me.jpg",
-  "skills" : ['programming','JavaScript', 'CSS','HTML'],
+  "skills" : ['JavaScript', 'CSS','HTML'],
   "contacts": {
     "mobile": "+420 604150128",
     "email": "martinaklimova@mac.com",
@@ -50,65 +50,148 @@ var education =  {
   "schools": [{
     "name": "Pacific Northwest College of Art",
     "location": "Portland, OR, US",
-    "major": ["B.F.A. in Communication Design"],
-    "graduationYear": 2003,
-    "url": "http: //www.pnca.edu/"
+    "degree" : "B.F.A.",
+    "major": "Communication Design",
+    "dates": "2003",
+    // "url": "http: //www.pnca.edu/"
   }, {
     "name": "Santa Barbara City College",
     "location": "Santa Barbara,CA, US",
-    "major": ["International Marketing Communication"],
-    "graduationYear": 1998,
-    "url": "http://www.sbcc.edu/"
+    "degree": "Associate Degree Program",
+    "major": "International Marketing Communication",
+    "dates": "1998",
+    // "url": "http://www.sbcc.edu/"
   }],
-  "onlineCourses": [{
-    "title": "Front-End Web Developer",
-    "school": "Udacity",
-    "dates": "2016 - 2017",
-    "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
-  }]
-};
- //employer, title, location, dates worked and description strings
- var work = {
-  "jobs": [{
-    "employer": "FOD Records",
-    "title": "Project Manager",
-    "location": "Toronto, Ca",
-    "datesWorked": ["Current", "2009"],
-    "description": "Creating, implementing and monitoring marketing and PR plans. Managing internal web development staff and external vendors."
+
+    "onlineCourses": [{
+        "title": "iOS Developer Nanodegree",
+        "school": "Udacity",
+        "dates": "2016-Present",
+        "url": "https://www.udacity.com/"
     }, {
-    "employer": "Cisco Design",
-    "title": "Internship",
-    "location": "Portland, OR, US",
-    "datesWorked": ["2003"],
-    "description": "Experience in interacting with all levels and departments."
-  }]
+        "title": "Front-End Web Developer Nanoegree",
+        "school": "Udacity",
+        "dates": "2016-Present",
+        "url": "https://www.udacity.com/"
+    }]
 };
 
-for(job in work.jobs) {
-$("#workExperience").append(HTMLworkStart);
- var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
- var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
- var formattedEmployerTitle = formattedEmployer + formattedTitle;
- $(".work-entry:last").append(formattedEmployerTitle);
+// $("#education").append(HTMLschoolStart);
+// for (var i = 0; i<education.schools.length; i++)
+//      {
+//          var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
+//          var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+//          var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+//          var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+//          var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
 
- var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].datesWorked);
- $(".work-entry:last").append(formattedDates);
+//          $(".education-entry:last").append(formattedSchoolName);
+//          $(".education-entry:last").append(formattedSchoolDates);
+//          $(".education-entry:last").append(formattedSchoolLocation);
+//          $(".education-entry:last").append(formattedMajor);
+//     }
+//     $("#education").append(HTMLonlineClasses);
+//     $("#education").append(HTMLschoolStart);
 
-var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
- $(".work-entry:last").append(formattedDescription);
-}
+//     for (var i = 0; i<education.onlineCourses.length; i++)
+//         {
+//             var formattedOnlineCourse= HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+//             var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+//             var formattedOnlineDate = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+//             var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+
+//             $(".education-entry:last").append(formattedOnlineCourse + formattedOnlineSchool);
+//             $(".education-entry:last").append(formattedOnlineDate);
+//             $(".education-entry:last").append(formattedOnlineURL);
+//         }
+
+education.display = function() {
+    education.schools.forEach(function(i, school) {
+        $("#education").append(HTMLschoolStart);
+        var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        var formattedSchool = formattedSchoolName + formattedSchoolDegree;
+        $(".education-entry:last").append(formattedSchool);
+        var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        $(".education-entry:last").append(formattedSchoolDates);
+        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        $(".education-entry:last").append(formattedSchoolLocation);
+        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+        $(".education-entry:last").append(formattedSchoolMajor);
+
+    });
+
+    $("#education").append(HTMLonlineClasses);
+    education.onlineCourses.forEach(function(j, course) {
+
+        $("#education").append(HTMLschoolStart);
+        // $(".education").append(HTMLonlineClasses);
+        var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+        var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+        var formattedSchoolOnline = formattedOnlineTitle + formattedOnlineSchool;
+        $(".education-entry:last").append(formattedSchoolOnline);
+        var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+        $(".education-entry:last").append(formattedOnlineDates);
+        var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+        $(".education-entry:last").append(formattedOnlineURL);
+
+
+    });
+
+
+    };
+//
+education.display();
+
+
+
+var work = {
+    "jobs": [{
+        "employer": "FOD Records",
+        "title": "Project Manager",
+        "location": ["Europe: Milan, Rome, Amsterdam", "London, UK"],
+        "dates": "Current - 2004",
+        "description": "Creating, implementing and monitoring marketing and PR plans. \
+        Managing internal web development staff and external vendors."
+
+    }, {
+        "employer": "Cisco Design",
+        "title": "Intern in Graphic Design Team",
+        "location": "Portland, OR, US",
+        "dates": "2003",
+        "description": "Experience in interacting with all levels and departments"
+    }]
+};
+
+work.display = function() {
+    work.jobs.forEach(function(i, job) {
+        $("#workExperience").append(HTMLworkStart);
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+        $(".work-entry:last").append(formattedEmployerTitle);
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        $(".work-entry:last").append(formattedLocation);
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        $(".work-entry:last").append(formattedDates);
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+        $(".work-entry:last").append(formattedDescription);
+    });
+
+};
+work.display();
 
 var projects = {
   "projects": [{
     "title": "Sample Projects 1",
     "dates": "2017",
-    "description": "arcade game",
-    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
+    "description": "TBA",
+    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
   }, {
     "title": "Sample Projects 2",
     "dates": "2017",
-    "description": "map",
-    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
+    "description": "TBA",
+    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
   }]
 };
 
@@ -117,13 +200,13 @@ for (var i = 0; i < projects.projects.length; i++) {
     $("#projects").append(HTMLprojectStart)
     var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
     $(".project-entry:last").append(formattedProjectTitle);
-    //Code for dates
+
     var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].title);
     $(".project-entry:last").append(formattedProjectDates);
-    //Code for description
+
     var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
     $(".project-entry:last").append(formattedProjectDescription);
-    //Code for images
+
     for  (var j = 0; j < projects.projects[i].images.length; j++) {
 
     var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
