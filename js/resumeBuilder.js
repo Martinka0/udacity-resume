@@ -14,19 +14,7 @@ var bio = {
     "location": "Austin"
   },
  };
-var bio = {
-  "name" : "Martina Klimova",
-  "role" : "Web Developer",
-  "welcomeMessage": "Welcome to my page",
-  "biopic" : "images/me.jpg",
-  "skills" : ['JavaScript', 'CSS','HTML'],
-  "contacts": {
-    "mobile": "+420 604150128",
-    "email": "martinaklimova@mac.com",
-    "github": "martinka0",
-    "location": "Austin"
-  },
- };
+
 
 
 bio.display = function() {
@@ -61,7 +49,7 @@ bio.display = function() {
     }
 
 };
-bio.display();
+
 
 var education =  {
   "schools": [{
@@ -127,7 +115,7 @@ education.display = function() {
 
 
     };
-education.display();
+
 
 
 
@@ -135,7 +123,7 @@ var work = {
     "jobs": [{
         "employer": "FOD Records",
         "title": "Project Manager",
-        "location": ["Europe: Milan, Rome, Amsterdam", "London, UK"],
+        "location": ["Europe"],
         "dates": "Current - 2004",
         "description": "Creating, implementing and monitoring marketing and PR plans. Managing internal web development staff and external vendors."
 
@@ -164,7 +152,7 @@ work.display = function() {
     });
 
 };
-work.display();
+
 
 var projects = {
   "projects": [{
@@ -180,24 +168,25 @@ var projects = {
   }]
 };
 
-for (var i = 0; i < projects.projects.length; i++) {
-
-    $("#projects").append(HTMLprojectStart);
-    var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-    $(".project-entry:last").append(formattedProjectTitle);
-
-    var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].title);
-    $(".project-entry:last").append(formattedProjectDates);
-
-    var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
-    $(".project-entry:last").append(formattedProjectDescription);
-
-    for  (var j = 0; j < projects.projects[i].images.length; j++) {
-
-    var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
-    $(".project-entry:last").append(formattedImage);
-  }
+ projects.display = function() {
+     projects.projects.forEach(function(i,project){
+       $("#projects").append(HTMLprojectStart);
+       var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+       var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+       var formattedProjectTitleDates = formattedProjectTitle + formattedProjectDates;
+       $(".project-entry:last").append(formattedProjectTitleDates);
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+       $(".project-entry:last").append(formattedProjectDescription);
+       if (projects.projects[project].images.length > 0) {
+       for (image in projects.projects[project].images) {
+       var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+       $(".project-entry:last").append(formattedImage);
+    }
 }
+        });
+ };
+
+
 
 $("#mapDiv").append(googleMap);
 $("#main").append(internationalizeButton);
@@ -213,7 +202,10 @@ function inName(name) {
 
 
 
-
+bio.display();
+education.display();
+work.display();
+projects.display();
 
 
 
