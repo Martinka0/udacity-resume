@@ -1,19 +1,16 @@
-
-
-
 var bio = {
-  "name" : "Martina Klimova",
-  "role" : "Web Developer",
-  "welcomeMessage": "Welcome to my page",
-  "biopic" : "images/me.jpg",
-  "skills" : ['JavaScript', 'CSS','HTML'],
-  "contacts": {
-    "mobile": "+420 604150128",
-    "email": "martinaklimova@mac.com",
-    "github": "martinka0",
-    "location": "Austin"
-  },
- };
+    "name": "Martina Klimova",
+    "role": "Web Developer",
+    "welcomeMessage": "Welcome to my page",
+    "biopic": "images/me.jpg",
+    "skills": ['JavaScript', 'CSS', 'HTML'],
+    "contacts": {
+        "mobile": "+420 604150128",
+        "email": "martinaklimova@mac.com",
+        "github": "martinka0",
+        "location": "Austin"
+    },
+};
 
 
 
@@ -22,22 +19,22 @@ bio.display = function() {
 
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     $("#header").prepend(formattedRole);
-     var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
     $("#header").prepend(formattedName);
     var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").append(formattedMessage);
     var formattedPicture = HTMLbioPic.replace("%data%", bio.biopic);
     $("#header").append(formattedPicture);
 
-    $("#topContacts").append("<li><i class='fa fa-github' aria-hidden='true'>"+"</i> martinka0</li>");
-    $("#topContacts").append("<li><i class='fa fa-mobile' aria-hidden='true'>"+"</i> +420604150128</li>");
-    $("#topContacts").append("<li><i class='fa fa-globe' aria-hidden='true'>"+"</i> Austin</li>");
-    $("#topContacts").append("<li><i class='fa fa-envelope-o' aria-hidden='true'>"+"</i> martinaklimova@mac.com</li>");
+    $("#topContacts").append("<li><i class='fa fa-github' aria-hidden='true'>" + "</i> martinka0</li>");
+    $("#topContacts").append("<li><i class='fa fa-mobile' aria-hidden='true'>" + "</i> +420604150128</li>");
+    $("#topContacts").append("<li><i class='fa fa-globe' aria-hidden='true'>" + "</i> Austin</li>");
+    $("#topContacts").append("<li><i class='fa fa-envelope-o' aria-hidden='true'>" + "</i> martinaklimova@mac.com</li>");
 
-    $("#footerContacts").append("<li><i class='fa fa-github' aria-hidden='true'>"+"</i> martinka0</li>");
-    $("#footerContacts").append("<li><i class='fa fa-globe' aria-hidden='true'>"+"</i> Austin</li>");
-    $("#footerContacts").append("<li><i class='fa fa-mobile' aria-hidden='true'>"+"</i> +420604150128</li>");
-    $("#footerContacts").append("<li><i class='fa fa-envelope-o' aria-hidden='true'>"+"</i> martinaklimova@mac.com</li>");
+    $("#footerContacts").append("<li><i class='fa fa-github' aria-hidden='true'>" + "</i> martinka0</li>");
+    $("#footerContacts").append("<li><i class='fa fa-globe' aria-hidden='true'>" + "</i> Austin</li>");
+    $("#footerContacts").append("<li><i class='fa fa-mobile' aria-hidden='true'>" + "</i> +420604150128</li>");
+    $("#footerContacts").append("<li><i class='fa fa-envelope-o' aria-hidden='true'>" + "</i> martinaklimova@mac.com</li>");
 
 
     if (bio.skills.length) {
@@ -51,20 +48,20 @@ bio.display = function() {
 };
 
 
-var education =  {
-  "schools": [{
-    "name": "Pacific Northwest College of Art",
-    "location": "Portland, OR, US",
-    "degree" : "B.F.A.",
-    "majors": ["Communication Design"],
-    "dates": "2003",
-  }, {
-    "name": "Santa Barbara City College",
-    "location": "Santa Barbara,CA, US",
-    "degree": "Associate Degree Program",
-    "majors": ["International Marketing Communication"],
-    "dates": "1998",
-  }],
+var education = {
+    "schools": [{
+        "name": "Pacific Northwest College of Art",
+        "location": "Portland, OR, US",
+        "degree": "B.F.A.",
+        "majors": ["Communication Design"],
+        "dates": "2003",
+    }, {
+        "name": "Santa Barbara City College",
+        "location": "Santa Barbara,CA, US",
+        "degree": "Associate Degree Program",
+        "majors": ["International Marketing Communication"],
+        "dates": "1998",
+    }],
 
     "onlineCourses": [{
         "title": "iOS Developer Nanodegree",
@@ -114,7 +111,7 @@ education.display = function() {
     });
 
 
-    };
+};
 
 
 
@@ -155,36 +152,36 @@ work.display = function() {
 
 
 var projects = {
-  "projects": [{
-    "title": "Sample Projects 1",
-    "dates": "2017",
-    "description": "TBA",
-    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
-  }, {
-    "title": "Sample Projects 2",
-    "dates": "2017",
-    "description": "TBA",
-    "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
-  }]
+    "projects": [{
+        "title": "Sample Projects 1",
+        "dates": "2017",
+        "description": "TBA",
+        "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
+    }, {
+        "title": "Sample Projects 2",
+        "dates": "2017",
+        "description": "TBA",
+        "images": ["http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/", "http://lorempixel.com/400/200/"]
+    }]
 };
 
- projects.display = function() {
-     projects.projects.forEach(function(i,project){
-       $("#projects").append(HTMLprojectStart);
-       var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-       var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-       var formattedProjectTitleDates = formattedProjectTitle + formattedProjectDates;
-       $(".project-entry:last").append(formattedProjectTitleDates);
+projects.display = function() {
+    projects.projects.forEach(function(i, project) {
+        $("#projects").append(HTMLprojectStart);
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        var formattedProjectTitleDates = formattedProjectTitle + formattedProjectDates;
+        $(".project-entry:last").append(formattedProjectTitleDates);
         var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-       $(".project-entry:last").append(formattedProjectDescription);
-       if (projects.projects[project].images.length > 0) {
-       for (image in projects.projects[project].images) {
-       var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-       $(".project-entry:last").append(formattedImage);
-    }
-}
-        });
- };
+        $(".project-entry:last").append(formattedProjectDescription);
+        if (projects.projects[project].images.length > 0) {
+            for (image in projects.projects[project].images) {
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                $(".project-entry:last").append(formattedImage);
+            }
+        }
+    });
+};
 
 
 
@@ -193,11 +190,11 @@ $("#main").append(internationalizeButton);
 
 
 function inName(name) {
-  name = name.trim().split(" ");
-  console.log(name);
-  name[1] = name[1].toUpperCase();
-  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-  return name[0] +" "+name[1];
+    name = name.trim().split(" ");
+    console.log(name);
+    name[1] = name[1].toUpperCase();
+    name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
+    return name[0] + " " + name[1];
 }
 
 
@@ -206,8 +203,3 @@ bio.display();
 education.display();
 work.display();
 projects.display();
-
-
-
-
-
